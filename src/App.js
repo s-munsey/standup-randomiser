@@ -3,34 +3,50 @@ import "./App.css";
 import NameBadge from "./components/NameBadge";
 
 const team = [
-  "AP",
-  "AG",
-  "AD",
-  "GJ",
-  "KT",
-  "LB",
-  "LE",
-  "RL",
-  "RD",
-  "SM",
-  "TB",
-  "WD",
-  "YS",
+  "Alistair",
+  "Andrey",
+  "Ayuub",
+  "Goderzi",
+  "Keegan",
+  "Leri",
+  "Lili-Mae",
+  "Rob",
+  "Rytis",
+  "Shaun",
+  "Thomas",
+  "Wojciech",
+  "Yerzhan",
 ];
 
 const shuffled = shuffle(team);
 
 function App() {
   const [next, setNext] = useState("");
+
   return (
     <div className="container">
       <NameBadge name={next} />
-      <button onClick={() => setNext(shuffled.pop())}>Click me</button>
+      <button
+        onClick={() => {
+          if (shuffled.length > 0) {
+            setNext(shuffled.pop());
+          } else {
+            setNext("Fin");
+          }
+        }}
+      >
+        Click me
+      </button>
       <h1>Team</h1>
-      {}
+      <ul>{getListItems()}</ul>
     </div>
   );
 }
+
+const getListItems = () => {
+  const list = [...shuffled];
+  return list.sort().map((name) => <li>{name}</li>);
+};
 
 function shuffle(array) {
   let currentIndex = array.length,
