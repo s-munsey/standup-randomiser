@@ -47,6 +47,10 @@ body {
   transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
 }
 
+ul li {
+  list-style: none;
+}
+
 /* CSS */
 .button-27 {
   appearance: none;

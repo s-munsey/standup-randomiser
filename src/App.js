@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import NameBadge from "./components/NameBadge";
+import TeamList from "./components/TeamList";
 
 const team = [
   "Alistair",
@@ -19,6 +20,7 @@ const team = [
 ];
 
 const shuffled = shuffle(team);
+let clickCount = 0;
 
 function App() {
   const [next, setNext] = useState("");
@@ -33,7 +35,36 @@ function App() {
           if (shuffled.length > 0) {
             setNext(shuffled.pop());
           } else {
-            setNext("Fin");
+            clickCount++;
+            if (clickCount > 16) {
+              setNext("'...'");
+            } else if (clickCount > 15) {
+              setNext("LINE");
+            } else if (clickCount > 14) {
+              setNext("THIS ");
+            } else if (clickCount > 13) {
+              setNext("CROSS");
+            } else if (clickCount > 12) {
+              setNext("DON'T");
+            } else if (clickCount > 11) {
+              setNext("if you didn't know the combination...");
+            } else if (clickCount > 10) {
+              setNext("YOU JUST REACHED ACROSS");
+            } else if (clickCount > 9) {
+              setNext("OH MY GOD I CAN'T BELIEVE");
+            } else if (clickCount > 8) {
+              setNext("this is a NO TOUCHING zone");
+            } else if (clickCount > 7) {
+              setNext("do not touch this");
+            } else if (clickCount > 6) {
+              setNext("how dare you, if you touch that again..");
+            } else if (clickCount > 5) {
+              setNext("don't touch that button");
+            } else if (clickCount > 3) {
+              setNext("Stop clicking");
+            } else {
+              setNext("Fin");
+            }
           }
           setIsShowing(true);
         }}
@@ -43,8 +74,7 @@ function App() {
       >
         Click me
       </button>
-      <h1>Team</h1>
-      <ul>{getListItems()}</ul>
+      <TeamList items={getListItems()} />
     </div>
   );
 }
