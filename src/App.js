@@ -22,17 +22,23 @@ const shuffled = shuffle(team);
 
 function App() {
   const [next, setNext] = useState("");
+  const [isShowing, setIsShowing] = useState(false);
 
   return (
     <div className="container">
-      <NameBadge name={next} />
+      <NameBadge name={next} isShowing={isShowing} />
       <button
-        onClick={() => {
+        className="button-27"
+        onMouseUp={() => {
           if (shuffled.length > 0) {
             setNext(shuffled.pop());
           } else {
             setNext("Fin");
           }
+          setIsShowing(true);
+        }}
+        onMouseDown={() => {
+          setIsShowing(false);
         }}
       >
         Click me
