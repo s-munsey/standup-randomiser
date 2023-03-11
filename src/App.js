@@ -30,7 +30,7 @@ function App() {
     <div className="container">
       <NameBadge name={next} isShowing={isShowing} />
       <button
-        className="button-30"
+        className="button-27"
         onMouseUp={() => {
           if (shuffled.length > 0) {
             setNext(shuffled.pop());
